@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>测试跨域</title>
+    <script src="js/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+</head>
+<body>
+    <h1>测试跨域效果</h1>
+    <input type="button" onclick="ToCors();" value="测试跨域" />
+
+    <hr />
+    <div class="container">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6">
+                User........<input type="text" id="userInput" />
+                <br />
+                Message.....<input type="text" id="msgInput" />
+                <br />
+                Group.......<input type="text" id="group_name" placeholder="组名" />
+                <br />
+                <input type="button" id="sendBtn" value="发送" />
+                <input type="button" id="joinGroup" value="加入组" />
+                <input type="button" id="leaveGroup" value="离开组" />
+                <input type="button" id="groupMsg" value="组内消息" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12"><hr /></div>
+        </div>
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6">
+                <ul id="messagesList">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //function ToCors() {
+        //    $.get("http://localhost:5000/api/WeatherForecast/getWeatherForecast", function (data) {
+        //        console.log(data);
+        //    });
+        //}
+
+        //signalR连接
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        async function start() {
+            try {
+                await connection.start();
+                console.log("SignalR Connected.");
+            } catch (err) {
+                console.log(err);
+                setTimeout(start, 5000);
+            }
+        };
+
+        connection.onclose(error => {
+            console.assert(connection.state === signalR.HubConnectionState.Disconnected);
+
+            document.getElementById("msgInput").disabled = true;
+
+            const li = document.createElement("li");
+            li.textContent = `Connection closed due to error "${error}". Try refreshing this page to restart the connection.`;
+            document.getElementById("messagesList").appendChild(li);
+        });
+
+        // Start the connection.
+        start();
+
+        $("#sendBtn").click(function () {
+            var user = $("#userInput").val();
+            var msg = $("#msgInput").val();
+            try {
+                connection.invoke("SendMessage", user, msg);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        $("#joinGroup").click(function () {
+            var groupName = $("#group_name").val();
+            try {
+                connection.invoke("AddToGroup", groupName);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        $("#leaveGroup").click(function () {
+            var groupName = $("#group_name").val();
+            try {
+                connection.invoke("RemoveFromGroup", groupName);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        $("#groupMsg").click(function () {
+            var groupName = $("#group_name").val();
+            var msg = $("#msgInput").val();
+            try {
+                connection.invoke("SendMsgToGroup", groupName, msg);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        connection.on("ReceiveMsg", (userOrGroupName, msg) => {
+            const li = document.createElement("li");
+            li.textContent = `${userOrGroupName}: ${msg}`;
+            document.getElementById("messagesList").appendChild(li);
+        });
+    </script>
+</body>
+</html>

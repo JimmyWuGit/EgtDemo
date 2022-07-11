@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EgtDemo.Model</name>
+    </assembly>
+    <members>
+        <member name="T:EgtDemo.Model.Demo">
+            <summary>
+            demo类
+            </summary>
+        </member>
+        <member name="P:EgtDemo.Model.Demo.Id">
+            <summary>
+            Demo ID
+            </summary>
+        </member>
+        <member name="P:EgtDemo.Model.Demo.Name">
+            <summary>
+            Demo名称
+            </summary>
+        </member>
+    </members>
+</doc>

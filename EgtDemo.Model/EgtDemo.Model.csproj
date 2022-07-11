@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>..\EgtDemo\EgtDemo.Model.xml</DocumentationFile>
+    <OutputPath>D:\Projects\VS_WORKPLACE\EgtDemo\EgtDemo\bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+</Project>

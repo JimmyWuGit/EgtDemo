@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EgtDemo</name>
+    </assembly>
+    <members>
+        <member name="T:EgtDemo.Controllers.WeatherForecastController">
+            <summary>
+            WeatherForecast控制器
+            </summary>
+        </member>
+        <member name="M:EgtDemo.Controllers.WeatherForecastController.Get">
+            <summary>
+            获取Demo实例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EgtDemo.Controllers.WeatherForecastController.Post">
+            <summary>
+            创建实例接口
+            </summary>
+        </member>
+        <member name="M:EgtDemo.Controllers.WeatherForecastController.Put">
+            <summary>
+            更新实例接口
+            </summary>
+        </member>
+        <member name="M:EgtDemo.Controllers.WeatherForecastController.Patch">
+            <summary>
+            局部更新接口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EgtDemo.Controllers.WeatherForecastController.CreateToken">
+            <summary>
+            获取jwt Token
+            </summary>
+            <returns>token</returns>
+        </member>
+        <member name="M:EgtDemo.Controllers.WeatherForecastController.GetUserInfo(System.String)">
+            <summary>
+            解析token并获取用户信息
+            </summary>
+            <param name="tokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EgtDemo.Controllers.WeatherForecastController.TestAdsFromAOP">
+            <summary>
+            测试日志AOP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:EgtDemo.CustomRouteAttribute.GroupName">
+            <summary>
+            分组名，实现IApiDescriptionGroupNameProvider接口
+            </summary>
+        </member>
+        <member name="M:EgtDemo.Extensions.ChatHub.AddToGroup(System.String)">
+            <summary>
+            加入组
+            </summary>
+            <param name="groupName">组名</param>
+            <returns></returns>
+        </member>
+        <member name="M:EgtDemo.Extensions.ChatHub.RemoveFromGroup(System.String)">
+            <summary>
+            离开组
+            </summary>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EgtDemo.Extensions.ChatHub.SendMsgToGroup(System.String,System.String)">
+            <summary>
+            组内发送消息
+            </summary>
+            <param name="groupName"></param>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EgtDemo.Extensions.CorsSetup.AddCorsSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Cors的方式解决跨域
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:EgtDemo.WeatherForecast">
+            <summary>
+            天气预报
+            </summary>
+        </member>
+        <member name="P:EgtDemo.WeatherForecast.Date">
+            <summary>
+            预报时间
+            </summary>
+        </member>
+        <member name="P:EgtDemo.WeatherForecast.TemperatureC">
+            <summary>
+            摄氏温度
+            </summary>
+        </member>
+        <member name="P:EgtDemo.WeatherForecast.TemperatureF">
+            <summary>
+            华氏温度
+            </summary>
+        </member>
+        <member name="P:EgtDemo.WeatherForecast.Summary">
+            <summary>
+            总计
+            </summary>
+        </member>
+        <member name="P:EgtDemo.WeatherForecast.Demo">
+            <summary>
+            自定义实例
+            </summary>
+        </member>
+        <member name="F:EgtDemo.ApiVersion.v1">
+            <summary>
+            版本一
+            </summary>
+        </member>
+        <member name="F:EgtDemo.ApiVersion.v2">
+            <summary>
+            版本二
+            </summary>
+        </member>
+    </members>
+</doc>
